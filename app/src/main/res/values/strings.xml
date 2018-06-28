@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Journal App</string>
+
+    <!-- string resources for the sign in and sign up layouts -->
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_sign_in">SIGN IN</string>
+    <string name="btn_sign_up">SIGN UP</string>
+    <string name="btn_link_to_sign_in">Have an account? Sign In here!</string>
+    <string name="btn_link_to_sign_up">Not Registered? Sign Up here!</string>
+
+    <!-- content desriptions -->
+    <string name="sign_in_image_desc">Image of Woman reading a journal</string>
 </resources>
