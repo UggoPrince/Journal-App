@@ -9,6 +9,12 @@
     <string name="btn_link_to_sign_in">Have an account? Sign In here!</string>
     <string name="btn_link_to_sign_up">Not Registered? Sign Up here!</string>
 
+    <!-- string resources for reset password -->
+    <string name="reset_pw_first_tv">Forgot Password?</string>
+    <string name="reset_pw_second_tv">Type in your email to get password reset instructions.</string>
+    <string name="btn_reset_password">RESET PASSWORD</string>
+    <string name="reset_back_btn"><![CDATA[<< Back]]></string>
+
     <!-- content desriptions -->
     <string name="sign_in_image_desc">Image of Woman reading a journal</string>
 </resources>
