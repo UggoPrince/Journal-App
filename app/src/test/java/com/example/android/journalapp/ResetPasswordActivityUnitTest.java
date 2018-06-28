@@ -67,7 +67,7 @@ public class ResetPasswordActivityUnitTest {
     }
 
     @Test
-    public void buttonBackTest(){
+    public void buttonBackTes4t(){
         when(mMockContext.getString(R.string.btn_back_leave_reset_pw))
                 .thenReturn(BUTTON_BACK);
 
