@@ -20,6 +20,11 @@
     <string name="edit_journal_title">Title</string>
     <string name="edit_journal_body">Body</string>
     <string name="btn_save_journal">SAVE</string>
+    
+    <!-- string resources for journal menu -->
+    <string name="action_profile">Profile</string>
+    <string name="action_delete_all">Delete All</string>
+    <string name="action_sign_out">Sign Out</string>
 
     <!-- content descriptions -->
     <string name="sign_in_image_desc">Image of Woman reading a journal</string>

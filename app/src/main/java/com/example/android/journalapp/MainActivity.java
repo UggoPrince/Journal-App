@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,5 +25,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(addJournalIntent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.journal_menu, menu);
+        return true;
     }
 }
