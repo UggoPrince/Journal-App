@@ -13,6 +13,7 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
@@ -43,7 +44,7 @@ public class SignInActivityTest {
     @Test
     public void scrollViewTest(){
         onView(withId(R.id.btn_link_for_sign_up)).
-                perform(scrollTo()).check(ViewAssertions.matches(isDisplayed()));
+                perform(scrollTo()).check(matches(isDisplayed()));
     }
 
     @Test
@@ -62,6 +63,7 @@ public class SignInActivityTest {
 
     @Test
     public void signInButtonTest(){
+
         onView(withId(R.id.btn_sign_in)).perform(click());
     }
 

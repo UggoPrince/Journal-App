@@ -10,17 +10,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".SignInActivity"></activity>
-        <activity android:name=".SignUpActivity"></activity>
-
-        <activity android:name=".ResetPasswordActivity"></activity>
-
-        <activity android:name=".MainActivity">
+        <!-- SignInActivity -->
+        <activity android:name=".SignInActivity"
+            android:label="@string/sign_in_activity_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!-- SignUpActivity -->
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/sign_up_activity_name"
+            android:parentActivityName=".SignInActivity">
+
+        </activity>
+
+        <!-- ResetPasswordActivity -->
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:label="@string/reset_password_activity_name"
+            android:parentActivityName=".SignInActivity">
+
+        </activity>
+
+        <!-- MainActivity -->
+        <activity android:name=".MainActivity">
+
         </activity>
 
         <!-- Add Journal activity -->

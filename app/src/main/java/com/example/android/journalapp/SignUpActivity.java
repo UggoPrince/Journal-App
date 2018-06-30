@@ -16,8 +16,14 @@
 
 package com.example.android.journalapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 
 /*
  *This class builds the sign up view layout
@@ -25,9 +31,50 @@ import android.os.Bundle;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    private EditText mEmailEntry;
+    private EditText mPasswordEntry;
+    private Button mSignUpButton;
+    private Button mForgotPasswordButton;
+    private Button mSignInLinkButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        mEmailEntry = (EditText) findViewById(R.id.sign_up_email);
+        mPasswordEntry = (EditText) findViewById(R.id.sign_up_password);
+        mSignUpButton = (Button) findViewById(R.id.btn_sign_up);
+        mForgotPasswordButton = (Button) findViewById(R.id.btn_reset_password2);
+        mSignInLinkButton = (Button) findViewById(R.id.btn_link_for_sign_in);
+
+        mSignUpButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = SignUpActivity.this;
+                Class journalActivity = MainActivity.class;
+                Intent intent = new Intent(context, journalActivity);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        mForgotPasswordButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignUpActivity.this, ResetPasswordActivity.class));
+            }
+        });
+
+        mSignInLinkButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = SignUpActivity.this;
+                Class signInActivity = SignInActivity.class;
+                Intent intent = new Intent(context, signInActivity);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }
