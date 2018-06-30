@@ -22,6 +22,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.MenuItem;
 import android.view.View;
 
 /*
@@ -35,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         FloatingActionButton fabButton = findViewById(R.id.fab_add_journal);
+
 
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +53,24 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.journal_menu, menu);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.action_sign_out:
+                startActivity(new Intent(MainActivity.this, SignInActivity.class));
+                finish();
+        }
         return true;
     }
 }

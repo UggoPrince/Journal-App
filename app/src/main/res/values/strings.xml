@@ -8,12 +8,16 @@
     <string name="btn_sign_up">SIGN UP</string>
     <string name="btn_link_to_sign_in">Have an account? Sign In here!</string>
     <string name="btn_link_to_sign_up">Not Registered? Sign Up here!</string>
+    <string name="sign_in_activity_name">Journal App - Sign In</string>
+    <string name="sign_up_activity_name">Journal App - Sign Up</string>
 
     <!-- string resources for reset password activity -->
     <string name="reset_pw_first_tv">Forgot Password?</string>
     <string name="reset_pw_second_tv">Type in your email to get password reset instructions.</string>
     <string name="btn_reset_password">RESET PASSWORD</string>
+    <string name="btn_forgot_password">Forgot Your Password?</string>
     <string name="btn_back_leave_reset_pw"><![CDATA[<< Back]]></string>
+    <string name="reset_password_activity_name">Journal App - Reset Password</string>
 
     <!-- string resources for add journal activity -->
     <string name="add_journal_activity_name">Add New Journal</string>
