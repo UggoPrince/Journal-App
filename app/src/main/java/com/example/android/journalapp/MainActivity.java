@@ -22,7 +22,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -73,4 +72,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-}
+} // my firebase project ID = journal-app-e48cd
