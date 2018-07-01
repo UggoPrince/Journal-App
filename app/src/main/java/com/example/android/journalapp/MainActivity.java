@@ -17,14 +17,32 @@
 package com.example.android.journalapp;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.example.android.journalapp.utilities.Journal;
+import com.example.android.journalapp.utilities.RecyclerViewAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /*
  * This class Builds the Journal App Layout and populates with journals
@@ -32,13 +50,56 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+    private FirebaseAuth.AuthStateListener authStateListener;
+
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private RecyclerView recyclerView;
+    private LinearLayoutManager linearLayoutManager;
+    private RecyclerViewAdapter recyclerViewAdapter;
+    private DatabaseReference databaseReference;
+    private DatabaseReference users;
+    private List<Journal> journals;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        if(currentUser == null) {
+            startActivity(new Intent(MainActivity.this, SignInActivity.class));
+            finish();
+        }
+
+
+
         setContentView(R.layout.activity_main);
 
+        journals = new ArrayList<Journal>();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        recyclerView = (RecyclerView) findViewById(R.id.journal_rv);
         FloatingActionButton fabButton = findViewById(R.id.fab_add_journal);
+        linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
+        users = databaseReference.child("users").child(currentUser.getUid());
+
+
+        users.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                loadAllJournals(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,9 +129,25 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.action_sign_out:
+                mAuth.signOut();
                 startActivity(new Intent(MainActivity.this, SignInActivity.class));
                 finish();
+                break;
         }
         return true;
     }
-}
+
+    private void loadAllJournals(DataSnapshot dataSnapshot){
+        //if (dataSnapshot != null){
+            for (DataSnapshot oneSnapshot : dataSnapshot.getChildren()){
+                Journal jonal = oneSnapshot.getValue(Journal.class);
+                String title = jonal.getTitle();
+                String body = jonal.getBody();
+                Date date = jonal.getDate();
+                journals.add(new Journal(title, body, date));
+                recyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this, journals);
+                recyclerView.setAdapter(recyclerViewAdapter);
+            }
+    }
+
+} // my firebase project ID = journal-app-e48cd
