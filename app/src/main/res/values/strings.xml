@@ -11,6 +11,9 @@
     <string name="sign_in_activity_name">Journal App - Sign In</string>
     <string name="sign_up_activity_name">Journal App - Sign Up</string>
 
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+
     <!-- string resources for reset password activity -->
     <string name="reset_pw_first_tv">Forgot Password?</string>
     <string name="reset_pw_second_tv">Type in your email to get password reset instructions.</string>
@@ -24,7 +27,7 @@
     <string name="edit_journal_title">Title</string>
     <string name="edit_journal_body">Body</string>
     <string name="btn_save_journal">SAVE</string>
-    
+
     <!-- string resources for journal menu -->
     <string name="action_profile">Profile</string>
     <string name="action_delete_all">Delete All</string>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.journalapp">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".utilities.MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,8 +14,24 @@
         android:theme="@style/AppTheme">
 
         <!-- SignInActivity -->
-        <activity android:name=".SignInActivity"
-            android:label="@string/sign_in_activity_name">
+        <activity
+            android:name=".SignInActivity"
+            android:label="@string/sign_in_activity_name" />
+
+        <!-- SignUpActivity -->
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/sign_up_activity_name"
+            android:parentActivityName=".SignInActivity" />
+
+        <!-- ResetPasswordActivity -->
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:label="@string/reset_password_activity_name"
+            android:parentActivityName=".SignInActivity" />
+
+        <!-- MainActivity -->
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,36 +39,25 @@
             </intent-filter>
         </activity>
 
-        <!-- SignUpActivity -->
-        <activity
-            android:name=".SignUpActivity"
-            android:label="@string/sign_up_activity_name"
-            android:parentActivityName=".SignInActivity">
-
-        </activity>
-
-        <!-- ResetPasswordActivity -->
-        <activity
-            android:name=".ResetPasswordActivity"
-            android:label="@string/reset_password_activity_name"
-            android:parentActivityName=".SignInActivity">
-
-        </activity>
-
-        <!-- MainActivity -->
-        <activity android:name=".MainActivity">
-
-        </activity>
-
         <!-- Add Journal activity -->
         <activity
             android:name=".AddJournalActivity"
             android:label="@string/add_journal_activity_name"
             android:parentActivityName=".MainActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".JournalDetails"
+            android:label="Details"
+            android:parentActivityName=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".JournalUpdate"
+            android:label="Update Journal"
+            android:parentActivityName=".MainActivity">
 
         </activity>
     </application>
