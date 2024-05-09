@@ -1,63 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.journalapp">
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".utilities.MyApplication"
-        android:allowBackup="false"
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-
-        <!-- SignInActivity -->
+        android:theme="@style/Base.Theme.Journal"
+        tools:targetApi="31">
         <activity
-            android:name=".SignInActivity"
-            android:label="@string/sign_in_activity_name" />
-
-        <!-- SignUpActivity -->
-        <activity
-            android:name=".SignUpActivity"
-            android:label="@string/sign_up_activity_name"
-            android:parentActivityName=".SignInActivity" />
-
-        <!-- ResetPasswordActivity -->
-        <activity
-            android:name=".ResetPasswordActivity"
-            android:label="@string/reset_password_activity_name"
-            android:parentActivityName=".SignInActivity" />
-
-        <!-- MainActivity -->
-        <activity android:name=".MainActivity">
+            android:name=".MainActivity"
+            android:theme="@style/Theme.Journal"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <!-- Add Journal activity -->
         <activity
             android:name=".AddJournalActivity"
             android:label="@string/add_journal_activity_name"
-            android:parentActivityName=".MainActivity">
+            android:theme="@style/Theme.Journal"
+            android:parentActivityName="com.journal.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".JournalDetails"
+            android:name=".JournalDetailsActivity"
             android:label="Details"
+            android:theme="@style/Theme.Journal"
             android:parentActivityName=".MainActivity">
 
         </activity>
         <activity
-            android:name=".JournalUpdate"
-            android:label="Update Journal"
-            android:parentActivityName=".MainActivity">
+            android:name=".UpdateJournalActivity"
+            android:label="Update"
+            android:theme="@style/Theme.Journal"
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".JournalDetailsActivity">
 
         </activity>
     </application>
