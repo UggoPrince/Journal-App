@@ -1,36 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemCardView"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:orientation="horizontal"
-    android:layout_margin="10dp"
-    android:background="#EEE"
-    android:elevation="2dp"
-    android:translationZ="2dp"
-    android:id="@+id/journal_details_ll">
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:id="@+id/title_tv"
-        android:textColor="@android:color/black"
-        android:textSize="25sp"
-        android:layout_weight="4"/>
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="0dp"
+    android:paddingVertical="0dp"
+    app:cardElevation="0dp">
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:id="@+id/date_tv"
-        android:textColor="@android:color/black"
-        android:textSize="15dp"
-        android:layout_weight="3"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/journal_details_ll"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_button"
-        android:layout_weight="0"
-        android:elevation="1dp"
-        android:translationZ="2dp"
-        android:src="@android:drawable/ic_menu_edit" />
-</LinearLayout>
+        android:layout_marginHorizontal="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/itemTopLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:id="@+id/checkboxLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="0dp">
+                <CheckBox
+                    android:id="@+id/deleteCheckbox"
+                    android:layout_gravity="center"
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutForTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/checkboxLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+                <TextView
+                    android:id="@+id/title_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="title"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/date_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="time"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@id/title_tv"
+                    app:layout_constraintStart_toStartOf="@id/title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/title_tv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--        <View-->
+<!--            android:id="@+id/divider"-->
+<!--            style="@style/LineColor"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/itemTopLayout"-->
+<!--            app:layout_constraintStart_toStartOf="@id/itemTopLayout"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/itemTopLayout"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+
+        <!--    <ImageView-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:id="@+id/edit_button"-->
+        <!--        android:layout_weight="0"-->
+        <!--        android:elevation="1dp"-->
+        <!--        android:translationZ="2dp"-->
+        <!--        android:src="@android:drawable/ic_menu_edit" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
