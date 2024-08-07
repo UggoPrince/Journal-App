@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".MainApplication"
+        android:name="com.journalingapp.MainApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,7 +14,7 @@
         android:theme="@style/Base.Theme.Journal"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="com.journalingapp.MainActivity"
             android:theme="@style/Theme.Journal"
             android:exported="true">
             <intent-filter>
@@ -25,27 +25,27 @@
         </activity>
         <!-- Add Journal activity -->
         <activity
-            android:name=".AddJournalActivity"
+            android:name="com.journalingapp.AddJournalActivity"
             android:label="@string/add_journal_activity_name"
             android:theme="@style/Theme.Journal"
-            android:parentActivityName="com.journal.MainActivity">
+            android:parentActivityName="com.journalingapp.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.journalingapp.MainActivity" />
         </activity>
         <activity
-            android:name=".JournalDetailsActivity"
+            android:name="com.journalingapp.JournalDetailsActivity"
             android:label="Details"
             android:theme="@style/Theme.Journal"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="com.journalingapp.MainActivity">
 
         </activity>
         <activity
-            android:name=".UpdateJournalActivity"
+            android:name="com.journalingapp.UpdateJournalActivity"
             android:label="Update"
             android:theme="@style/Theme.Journal"
             android:windowSoftInputMode="adjustResize"
-            android:parentActivityName=".JournalDetailsActivity">
+            android:parentActivityName="com.journalingapp.JournalDetailsActivity">
 
         </activity>
     </application>
